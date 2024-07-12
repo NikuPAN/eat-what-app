@@ -1,4 +1,6 @@
-import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import NavMenu from './components/navMenu/NavMenu';
+
 import Home from './components/Home'
 import Random from './components/Random';
 import List from './components/List';
@@ -11,12 +13,7 @@ import './App.css';
 const App = () => (
   <ChakraProvider>
     <Router>
-      <nav className="navbar">
-        <Link to="/random">Random</Link>
-        <Link to="/list">Restaurant List</Link>
-        {/* <Link to="/edit">Edit Restaurant</Link>
-        <Link to="/history">History</Link> */}
-      </nav>
+      <NavMenu />
       <Routes>
         <Route path="/random" element={<Random />} />
         <Route path="/list" element={<List />} />
