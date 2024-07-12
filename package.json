@@ -43,5 +43,5 @@
       "last 1 safari version"
     ]
   },
-  "proxy": "https://eat-what.niku-aws.com"
+  "proxy": "http://localhost:3001"
 }
