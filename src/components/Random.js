@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import { Link  as RouterLink } from 'react-router-dom';
 import axios from 'axios';
 import {
   Table,
@@ -18,7 +17,7 @@ import {
   MenuItem
 } from '@chakra-ui/react'
 
-import { ArrowBackIcon, ChevronDownIcon } from '@chakra-ui/icons'
+import { ChevronDownIcon } from '@chakra-ui/icons'
 
 import '../App.css';
 
@@ -64,10 +63,6 @@ const Random = () => {
 
   return (
 		<div>
-			<RouterLink to="/">
-				<Button leftIcon={<ArrowBackIcon />} colorScheme="teal">Return To Home</Button>
-			</RouterLink>
-
 			<div className="container">
 				<Text fontSize='2xl'>Give up thinking?</Text>
 				<Text fontSize='2xl'>Random is your friend!</Text>
