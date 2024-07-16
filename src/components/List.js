@@ -87,10 +87,10 @@ const List = ({ data }) => {
             <Tr>
               <Th minW="120px">Name</Th>
               {extraColumns.cuisine && <Th maxW="100px">Cuisine</Th>}
-              {extraColumns.address && <Th minW="150px">Address</Th>}
-              {extraColumns.postcode && <Th maxW="60px">Postcode</Th>}
-              <Th maxW="100px">Opening Hours</Th>
-              {extraColumns.website && <Th maxW="150px">Website</Th>}
+              {extraColumns.address && <Th maxW="120px">Address</Th>}
+              {extraColumns.postcode && <Th maxW="70px">Postcode</Th>}
+              <Th maxW="130px">Opening Hours</Th>
+              {extraColumns.website && <Th maxW="120px">Website</Th>}
               {extraColumns.lastUpdated && <Th maxW="120px">Last Updated</Th>}
             </Tr>
           </Thead>
