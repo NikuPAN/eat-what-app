@@ -31,7 +31,7 @@ const Random = ({data}) => {
   };
 
 	const filteredRestaurants = () => {
-    return selectedCuisine !== 'All Cuisine' ? data.filter((restaurant) => restaurant?.Cuisine === selectedCuisine) : data;
+    return data && selectedCuisine !== 'All Cuisine' ? data.filter((restaurant) => restaurant?.Cuisine === selectedCuisine) : data;
   }
 
 	const setRandomRestaurant = () => {
@@ -46,7 +46,9 @@ const Random = ({data}) => {
 
   useEffect(() => {
     const loadCuisines = async () => {
-      const uniqueCuisines = [...new Set(data.map(item => item.Cuisine))];
+      if (!data)
+        return;
+      const uniqueCuisines = [...new Set(data?.map(item => item.Cuisine))];
       uniqueCuisines.sort();
       setCuisines(uniqueCuisines);
     };
@@ -75,53 +77,48 @@ const Random = ({data}) => {
 				<Button width="250px" colorScheme="teal" size='lg' onClick={setRandomRestaurant}>Go!</Button>
 				{restaurant &&
 					<TableContainer overflowY="auto">
-          	<Table variant='striped' colorScheme='teal'>
+          	<Table variant='striped' colorScheme='teal' size="sm">
 							<Thead>
 								<Tr>
-									<Th minW="30%"></Th>
-									<Th maxW="50%">Detail</Th>
+									<Th minW="150px"></Th>
+									<Th>Detail</Th>
 								</Tr>
 							</Thead>
 							<Tbody>
 								<Tr>
 									<Th>Name</Th>
 									<Td>
-										<Text
-												whiteSpace="normal"
-												overflow="auto"
-											>
-												{restaurant?.Name}
+										<Text whiteSpace="normal" wordBreak="break-all" overflowWrap="break-all">
+											{restaurant?.Name}
 										</Text>
 									</Td>
 								</Tr>
+
 								<Tr>
 									<Th>Cuisine</Th>
 									<Td>{restaurant?.Cuisine}</Td>
 								</Tr>
+
 								<Tr>
 									<Th>Address</Th>
 									<Td>
-										<Text
-											whiteSpace="normal"
-											overflow="auto"
-										>
+										<Text whiteSpace="normal" wordBreak="break-all" overflowWrap="break-all">
 											<Link href={generateGoogleMapsLink(restaurant.Address)} isExternal color="blue.500" textDecoration="underline">
 												{restaurant?.Address}
 											</Link>
 										</Text>
 									</Td>
 								</Tr>
+
 								<Tr>
 									<Th>Postcode</Th>
 									<Td>{restaurant?.PostalCode}</Td>
 								</Tr>
+
 								<Tr>
 									<Th>Opening Hours</Th>
 									<Td>
-										<Text
-											whiteSpace="normal"
-											overflow="auto"
-										>
+										<Text whiteSpace="normal" wordBreak="break-all" overflowWrap="break-all">
 											{restaurant?.OpeningHours}
 										</Text>
 									</Td>
@@ -130,10 +127,7 @@ const Random = ({data}) => {
 								<Tr>
 									<Th>Website</Th>
 									<Td>
-										<Text
-											whiteSpace="normal"
-											overflow="auto"
-										>
+										<Text whiteSpace="normal" wordBreak="break-all" overflowWrap="break-all">
 											<Link href={restaurant?.Website} isExternal color="blue.500" textDecoration="underline">
 												{restaurant?.Website}
 											</Link>
@@ -143,7 +137,11 @@ const Random = ({data}) => {
 
 								<Tr>
 									<Th>Last Updated</Th>
-									<Td>{restaurant?.LastUpdated}</Td>
+									<Td>
+                    <Text whiteSpace="normal" wordBreak="break-all" overflowWrap="break-all">
+                      {restaurant?.LastUpdated}
+                    </Text>
+                  </Td>
 								</Tr>
 
 							</Tbody>

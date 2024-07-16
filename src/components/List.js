@@ -35,12 +35,14 @@ const List = ({ data }) => {
   };
 
   const filteredRestaurants = () => {
-    return selectedCuisine !== 'All Cuisine' ? data.filter((restaurant) => restaurant?.Cuisine === selectedCuisine) : data;
+    return data && selectedCuisine !== 'All Cuisine' ? data.filter((restaurant) => restaurant?.Cuisine === selectedCuisine) : data;
   }
 
   useEffect(() => {
     const loadCuisines = async () => {
-      const uniqueCuisines = [...new Set(data.map(item => item.Cuisine))];
+      if (!data)
+        return;
+      const uniqueCuisines = [...new Set(data?.map(item => item.Cuisine))];
       uniqueCuisines.sort();
       setCuisines(uniqueCuisines);
     };
@@ -65,7 +67,7 @@ const List = ({ data }) => {
       </Menu>
       <TableContainer overflowY="auto">
         <Table variant='striped' colorScheme='teal' size="sm">
-          <Thead>
+          <Thead position="sticky" top="0" bgColor="gray.200" zIndex="1">
             <Tr>
               <Th minW="20%">Name</Th>
               <Th maxW="40%">Address</Th>
