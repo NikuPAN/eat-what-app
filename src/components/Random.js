@@ -21,9 +21,8 @@ import { ChevronDownIcon } from '@chakra-ui/icons'
 
 import '../App.css';
 
-const Random = () => {
+const Random = ({data}) => {
 	const [restaurant, setRestaurant] = useState(null);
-  const [restaurants, setRestaurants] = useState(null);
 	const [cuisines, setCuisines] = useState(['All Cuisine']);
 	const [selectedCuisine, setSelectedCuisine] = useState('All Cuisine');
 
@@ -32,7 +31,7 @@ const Random = () => {
   };
 
 	const filteredRestaurants = () => {
-    return selectedCuisine !== 'All Cuisine' ? restaurants.filter((restaurant) => restaurant?.Cuisine === selectedCuisine) : restaurants;
+    return selectedCuisine !== 'All Cuisine' ? data.filter((restaurant) => restaurant?.Cuisine === selectedCuisine) : data;
   }
 
 	const setRandomRestaurant = () => {
@@ -45,21 +44,15 @@ const Random = () => {
     return `https://www.google.com/maps/search/?api=1&query=${encodedAddress}`;
   };
 
-	useEffect(() => {
-		const fetchRestaurants = async () => {
-			try {
-				const response = await axios.get('/api/v1/getAll');
-				setRestaurants(response?.data);
-				const uniqueCuisines = [...new Set(response?.data.map(item => item.Cuisine))];
-				uniqueCuisines.sort();
-				setCuisines(uniqueCuisines);
-			} catch (error) {
-				console.error('Error fetching restaurant:', error);
-			}
-		};
+  useEffect(() => {
+    const loadCuisines = async () => {
+      const uniqueCuisines = [...new Set(data.map(item => item.Cuisine))];
+      uniqueCuisines.sort();
+      setCuisines(uniqueCuisines);
+    };
 
-    fetchRestaurants();
-  }, []);
+    loadCuisines();
+  }, [data]);
 
   return (
 		<div>
