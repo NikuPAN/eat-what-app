@@ -88,7 +88,7 @@ const Random = ({data}) => {
 								<Tr>
 									<Th>Name</Th>
 									<Td>
-										<Text whiteSpace="normal" wordBreak="break-all" overflowWrap="break-all">
+										<Text whiteSpace="normal" wordBreak="break-word" overflowWrap="break-word">
 											{restaurant?.Name}
 										</Text>
 									</Td>
@@ -102,7 +102,7 @@ const Random = ({data}) => {
 								<Tr>
 									<Th>Address</Th>
 									<Td>
-										<Text whiteSpace="normal" wordBreak="break-all" overflowWrap="break-all">
+										<Text whiteSpace="normal" wordBreak="break-word" overflowWrap="break-word">
 											<Link href={generateGoogleMapsLink(restaurant.Address)} isExternal color="blue.500" textDecoration="underline">
 												{restaurant?.Address}
 											</Link>
@@ -118,7 +118,7 @@ const Random = ({data}) => {
 								<Tr>
 									<Th>Opening Hours</Th>
 									<Td>
-										<Text whiteSpace="normal" wordBreak="break-all" overflowWrap="break-all">
+										<Text whiteSpace="normal" wordBreak="break-word" overflowWrap="break-word">
 											{restaurant?.OpeningHours}
 										</Text>
 									</Td>

@@ -71,37 +71,26 @@ const List = ({ data }) => {
             <Tr>
               <Th minW="20%">Name</Th>
               <Th maxW="40%">Address</Th>
-              <Th maxW="30%">Opening Hours</Th>
+              <Th maxW="100px">Opening Hours</Th>
             </Tr>
           </Thead>
           <Tbody>
           {filteredRestaurants().map((restaurant) => (
             <Tr key={restaurant.id}>
               <Td>
-                <Text
-                  whiteSpace="normal"
-                  overflow="auto"
-                  textOverflow="ellipsis"
-                >
+                <Text whiteSpace="normal" wordBreak="break-word" overflowWrap="break-word">
                   {restaurant.Name}
                 </Text>
               </Td>
               <Td>
-                <Text
-                  whiteSpace="normal"
-                  overflow="auto"
-                >
+                <Text whiteSpace="normal" wordBreak="break-word" overflowWrap="break-word">
                   <Link href={generateGoogleMapsLink(restaurant.Address)} isExternal color="blue.500" textDecoration="underline">
                     {restaurant.Address}
                   </Link>
                 </Text>
               </Td>
               <Td>
-                <Text
-                  whiteSpace="normal"
-                  overflow="auto"
-                  textOverflow="ellipsis"
-                >
+                <Text whiteSpace="normal" wordBreak="break-word" overflowWrap="break-word">
                   {restaurant.OpeningHours}
                 </Text>
               </Td>
