@@ -6,23 +6,31 @@ import Random from './components/Random';
 import List from './components/List';
 import Edit from './components/Edit';
 import History from './components/History';
+import React, { useState } from 'react';
+import DataFetcher from './components/data/dataFetcher';
+
 import { ChakraProvider } from '@chakra-ui/react'
 
 import './App.css';
 
-const App = () => (
-  <ChakraProvider>
-    <Router>
-      <NavMenu />
-      <Routes>
-        <Route path="/random" element={<Random />} />
-        <Route path="/list" element={<List />} />
-        <Route path="/edit" element={<Edit />} />
-        <Route path="/history" element={<History />} />
-        <Route path="/" element={<Home />} />
-      </Routes>
-    </Router>
-  </ChakraProvider>
-);
+const App = () => {
+  const [data, setData] = useState(null);
+
+  return (
+    <ChakraProvider>
+      <Router>
+        <NavMenu />
+        <DataFetcher setData={setData} />
+          <Routes>
+            <Route path="/random" element={<Random data={data} />} />
+            <Route path="/list" element={<List data={data} />} />
+            <Route path="/edit" element={<Edit />} />
+            <Route path="/history" element={<History />} />
+            <Route path="/" element={<Home data={data} />} />
+          </Routes>
+      </Router>
+    </ChakraProvider>
+  )
+};
 
 export default App;
