@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { Text, Button, Image, Box, Flex, Spinner, Flex } from '@chakra-ui/react'
+import { Text, Button, Image, Box, Flex, Spinner } from '@chakra-ui/react'
 
 import '../App.css';
 
