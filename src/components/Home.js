@@ -6,8 +6,8 @@ import '../App.css';
 
 const Home = ({data}) => {
 	const imagesPath = [
-		['./evo.jpg', './timmy.jpg'],
-		['./dicky.jpg', './lance.jpg'],
+		['./Sushi.jpg', './Samosas.jpg'],
+		['./Dimsum.jpg', './Risotto.jpg'],
 	];
 
 	return (
