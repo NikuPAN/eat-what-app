@@ -1,10 +1,10 @@
-import React, { useEffect } from 'react';
+import { useEffect } from 'react';
 
 const DataFetcher = ({ setData }) => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await fetch('/api/v1/getAll');
+        const response = await fetch('https://eat-what-api.niku-aws.com/api/v1/getAll');
         const result = await response.json();
         setData(result);
       } catch (error) {
